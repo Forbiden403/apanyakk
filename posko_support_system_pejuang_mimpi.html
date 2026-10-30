@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posko Support System Pejuang Mimpi 🚀✨</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Fredoka & Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --neo-shadow: 6px 6px 0px #1F2937;
+            --neo-shadow-sm: 4px 4px 0px #1F2937;
+            --neo-shadow-lg: 10px 10px 0px #1F2937;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FFFDF7; /* Soft Warm Cream */
+            background-image: radial-gradient(#93C5FD 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
+            overflow-x: hidden;
+            user-select: none;
+            color: #1F2937;
+        }
+
+        h1, h2, h3, .font-chunky {
+            font-family: 'Fredoka', sans-serif;
+            letter-spacing: 0.3px;
+        }
+
+        /* Cute Neo-Brutalism Utilities */
+        .neo-box {
+            border: 3.5px solid #1F2937;
+            box-shadow: var(--neo-shadow);
+            transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .neo-box-lg {
+            border: 4px solid #1F2937;
+            box-shadow: var(--neo-shadow-lg);
+        }
+
+        .neo-btn {
+            border: 3px solid #1F2937;
+            box-shadow: var(--neo-shadow-sm);
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
+            cursor: pointer;
+        }
+
+        .neo-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px #1F2937;
+        }
+
+        .neo-btn:active {
+            transform: translate(3px, 3px);
+            box-shadow: 1px 1px 0px #1F2937;
+        }
+
+        /* Marquee Animation */
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: 200%;
+            animation: marquee 20s linear infinite;
+        }
+
+        /* Gentle Shake Animation */
+        @keyframes shake {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(-5px, -3px) rotate(-1.5deg); }
+            50% { transform: translate(5px, 2px) rotate(1.5deg); }
+            75% { transform: translate(-3px, 4px) rotate(-1deg); }
+        }
+        .shake-screen {
+            animation: shake 0.35s ease-in-out;
+        }
+
+        /* Floating / Bouncing Animations */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(-1deg); }
+            50% { transform: translateY(-7px) rotate(1.5deg); }
+        }
+        .animate-float {
+            animation: floatSlow 3s ease-in-out infinite;
+        }
+
+        /* Comic Hit Pop */
+        @keyframes popHit {
+            0% { transform: scale(0.4) rotate(-10deg); opacity: 1; }
+            60% { transform: scale(1.15) rotate(6deg); opacity: 1; }
+            100% { transform: scale(1.3) translateY(-45px) rotate(0deg); opacity: 0; }
+        }
+        .comic-pop {
+            animation: popHit 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            pointer-events: none;
+        }
+
+        /* Sweet Pink Party Mode */
+        @keyframes pinkPartyBg {
+            0% { background-color: #FBBF24; }
+            25% { background-color: #F472B6; }
+            50% { background-color: #A7F3D0; }
+            75% { background-color: #C4B5FD; }
+            100% { background-color: #FBBF24; }
+        }
+        .party-active {
+            animation: pinkPartyBg 1.2s infinite;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FEF3C7;
+            border-left: 3px solid #1F2937;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #60A5FA;
+            border: 2px solid #1F2937;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-20 relative">
+
+    <!-- Canvas Confetti Overlay -->
+    <canvas id="confetti-canvas" class="fixed inset-0 pointer-events-none z-50 w-full h-full"></canvas>
+
+    <!-- Floating Comic Hit Container -->
+    <div id="hit-effects-container" class="fixed inset-0 pointer-events-none z-50 overflow-hidden"></div>
+
+    <!-- TOP RUNNING MARQUEE -->
+    <div class="bg-amber-300 text-gray-900 border-b-4 border-gray-800 py-2 overflow-hidden sticky top-0 z-40 shadow-sm">
+        <div class="animate-marquee font-chunky text-sm md:text-base tracking-wide">
+            <span class="mx-4">🚀 POSKO SUPPORT SYSTEM PEJUANG MIMPI!</span>
+            <span class="mx-4">✨ CAPEK BOLEH, ISTIRAHAT BOLEH, TAPI NYERAH JANGAN YA!</span>
+            <span class="mx-4">🔥 PROSES NGGAK AKAN MENGKHIANATI HASIL, GASKEN TERUS!</span>
+            <span class="mx-4">🧋 TARIK NAPAS DULU, SEDUH MINUMAN FAVORIT, LANJUT LAGI!</span>
+            <span class="mx-4">🚀 POSKO SUPPORT SYSTEM PEJUANG MIMPI!</span>
+            <span class="mx-4">✨ CAPEK BOLEH, ISTIRAHAT BOLEH, TAPI NYERAH JANGAN YA!</span>
+            <span class="mx-4">🔥 PROSES NGGAK AKAN MENGKHIANATI HASIL, GASKEN TERUS!</span>
+            <span class="mx-4">🧋 TARIK NAPAS DULU, SEDUH MINUMAN FAVORIT, LANJUT LAGI!</span>
+        </div>
+    </div>
+
+    <!-- MAIN CONTAINER -->
+    <div id="main-wrapper" class="max-w-5xl mx-auto px-4 sm:px-6 pt-6 space-y-8">
+
+        <!-- 1. HERO SECTION PEJUANG MIMPI -->
+        <header class="flex flex-col md:flex-row items-center justify-between gap-5 bg-gradient-to-br from-sky-200 via-teal-100 to-amber-100 neo-box rounded-3xl p-6 sm:p-8 relative overflow-hidden">
+            <div class="absolute -right-4 -bottom-6 text-8xl opacity-25 pointer-events-none rotate-12">🚀</div>
+            
+            <div class="text-center md:text-left z-10 max-w-2xl">
+                <div class="inline-flex items-center gap-1.5 bg-amber-300 text-gray-900 font-chunky text-xs sm:text-sm px-3.5 py-1 rounded-full border-2 border-gray-800 mb-3 shadow-[2px_2px_0px_#1F2937]">
+                    <span>✨</span> Posko Support System Pejuang Mimpi
+                </div>
+                <h1 class="text-3xl sm:text-5xl font-chunky leading-tight text-gray-900">
+                    Halo Calon Orang Hebat! Lagi Capek Ngejar Mimpi Ya? <span class="bg-sky-400 text-gray-900 px-2.5 py-0.5 rounded-xl border-2 border-gray-800 inline-block -rotate-1 mt-1 shadow-[3px_3px_0px_#1F2937]">Sini Recharge Dulu! ⚡🌟</span>
+                </h1>
+                <p class="mt-3 font-bold text-sm sm:text-base text-gray-700 leading-relaxed">
+                    Website khusus buat kamu yang tiap hari udah kerja keras dan pantang mundur demi ngejar cita-cita besar. Kalau hari ini rasanya lagi berat banget, rehat bentar di sini yuk biar baterainya penuh lagi! 🌱💪
+                </p>
+            </div>
+
+            <div class="flex flex-col items-center gap-2 z-10 shrink-0">
+                <div class="text-5xl sm:text-6xl animate-float">🎯🏆</div>
+                <button id="sound-toggle" onclick="toggleSound()" class="neo-btn bg-emerald-200 hover:bg-emerald-300 px-4 py-2.5 rounded-2xl font-chunky flex items-center gap-2 text-xs sm:text-sm text-gray-900">
+                    <span id="sound-icon">🔊</span>
+                    <span id="sound-text">Efek Suara Seru: ON</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- 2. BAROMETER ENERGI PEJUANG MIMPI -->
+        <section class="bg-white neo-box rounded-3xl p-5 sm:p-7 relative">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+                <div class="flex items-center gap-3">
+                    <span class="text-4xl sm:text-5xl animate-bounce" id="mood-emoji">🔋</span>
+                    <div>
+                        <h2 class="text-xl sm:text-2xl font-chunky text-gray-900">BATERAI SEMANGAT PEJUANG MIMPI ⚡</h2>
+                        <p class="text-xs sm:text-sm font-bold text-gray-500">Klik tombol asupan energi di bawah biar tenaga buat ngejar target balik 100%!</p>
+                    </div>
+                </div>
+                <div class="bg-sky-100 border-2 border-gray-800 px-4 py-2 rounded-2xl self-start sm:self-auto shadow-[3px_3px_0px_#1F2937]">
+                    <span class="text-[11px] font-extrabold uppercase block text-sky-700">Status Baterai Sekarang:</span>
+                    <span id="energy-title" class="font-chunky text-sm sm:text-base text-gray-900">Mode Kucing Rebahan / Lowbat 😴 (20%)</span>
+                </div>
+            </div>
+
+            <!-- Progress Bar Box -->
+            <div class="w-full h-11 sm:h-12 bg-sky-50 border-3 border-gray-800 rounded-2xl overflow-hidden relative p-1.5 shadow-inner" style="border-width: 3px;">
+                <div id="energy-bar" class="h-full bg-gradient-to-r from-sky-400 via-amber-300 to-emerald-400 rounded-xl border-2 border-gray-800 transition-all duration-500 flex items-center justify-end pr-3" style="width: 20%;">
+                    <span id="energy-percent-text" class="font-chunky text-gray-900 text-xs sm:text-sm bg-white/90 px-2 py-0.5 rounded-full border border-gray-800">20%</span>
+                </div>
+            </div>
+
+            <!-- Reaction Text Bubble -->
+            <div id="boost-reaction" class="mt-3 text-center font-bold text-xs sm:text-sm text-sky-800 bg-sky-50 border-2 border-dashed border-sky-300 rounded-xl py-2 px-3">
+                ✨ Pilih salah satu tombol booster di bawah buat isi ulang semangat kamu hari ini! ✨
+            </div>
+
+            <!-- Friendly Boost Buttons -->
+            <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-2">
+                <button onclick="quickBoost(25, 'Seduh Matcha / Kopi Dingin 🧋', 'Sruput dulu es matcha atau kopi dinginnya! Otak langsung seger lagi siap mikir jernih! 🧋❄️')" class="neo-btn bg-emerald-200 hover:bg-emerald-300 p-3 rounded-2xl font-chunky text-xs sm:text-sm flex items-center justify-center gap-2 text-left">
+                    <span class="text-2xl">🧋</span>
+                    <div>
+                        <span class="block text-gray-900">Seduh Matcha / Kopi</span>
+                        <span class="text-[11px] font-bold text-emerald-900">+25% Fokus Naik!</span>
+                    </div>
+                </button>
+
+                <button onclick="quickBoost(25, 'Asupan Seblak Level Pas 🍜', 'Makan yang enak dulu biar mood nggak berantakan! Perut kenyang, semangat berjuang lanjut lagi! 🍜🔥')" class="neo-btn bg-amber-200 hover:bg-amber-300 p-3 rounded-2xl font-chunky text-xs sm:text-sm flex items-center justify-center gap-2 text-left">
+                    <span class="text-2xl">🍜</span>
+                    <div>
+                        <span class="block text-gray-900">Asupan Seblak / Jajan</span>
+                        <span class="text-[11px] font-bold text-amber-900">+25% Tenaga Naik!</span>
+                    </div>
+                </button>
+
+                <button onclick="quickBoost(30, 'Tarik Napas & Istirahat Bentar 🧘‍♀️', 'Tarik napas dalam-dalam... hembuskan! Nggak usah buru-buru, istirahat sejenak itu bagian dari proses kok! 🌿🧘‍♀️')" class="neo-btn bg-sky-200 hover:bg-sky-300 p-3 rounded-2xl font-chunky text-xs sm:text-sm flex items-center justify-center gap-2 text-left">
+                    <span class="text-2xl">🧘‍♀️</span>
+                    <div>
+                        <span class="block text-gray-900">Tarik Napas & Rehat</span>
+                        <span class="text-[11px] font-bold text-sky-900">+30% Pikiran Tenang!</span>
+                    </div>
+                </button>
+
+                <button onclick="quickBoost(40, 'Ingat Target & Mimpi Besar 🚀', 'Bayangin betapa bangganya diri kamu di masa depan pas semua perjuangan hari ini akhirnya terbayar lunas! 🚀🏆')" class="neo-btn bg-purple-200 hover:bg-purple-300 p-3 rounded-2xl font-chunky text-xs sm:text-sm flex items-center justify-center gap-2 text-left">
+                    <span class="text-2xl">🚀</span>
+                    <div>
+                        <span class="block text-gray-900">Ingat Mimpi Besar</span>
+                        <span class="text-[11px] font-bold text-purple-900">+40% Motivasi Full!</span>
+                    </div>
+                </button>
+            </div>
+        </section>
+
+        <!-- GRID 2 COLUMNS: GACHA KAPSUL TOKOH TERKENAL & BASMI PENGHALANG MIMPI -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+            <!-- 3. MESIN GACHA KAPSUL QUOTES TOKOH TERKENAL -->
+            <section class="bg-gradient-to-b from-amber-100 via-sky-100 to-indigo-100 neo-box rounded-3xl p-6 flex flex-col justify-between relative overflow-hidden">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-white border-2 border-gray-800 px-3 py-1 rounded-full font-chunky text-xs text-indigo-700 shadow-[2px_2px_0px_#1F2937]">
+                            💊 Mesin Gacha Petuah Tokoh Hebat
+                        </span>
+                        <span class="font-chunky text-gray-800 text-xs bg-amber-300 px-2.5 py-1 rounded-lg border-2 border-gray-800">
+                            Kapsul ke-#<span id="gacha-count">1</span>
+                        </span>
+                    </div>
+
+                    <h2 class="text-2xl sm:text-3xl font-chunky text-gray-900 mb-2">
+                        KAPSUL QUOTES TOKOH TERKENAL! 🌟
+                    </h2>
+                    <p class="text-xs sm:text-sm font-bold text-gray-700 mb-4">
+                        Putar kapsulnya buat dapet wejangan keren dari tokoh-tokoh dunia & Indonesia biar makin membara ngejar mimpinya!
+                    </p>
+
+                    <!-- Quote Display Screen -->
+                    <div id="quote-box" class="bg-white neo-box rounded-2xl p-5 min-h-[230px] flex flex-col justify-between text-center relative mb-6">
+                        <div class="flex items-center justify-center gap-2 mb-2">
+                            <span class="text-3xl" id="quote-emoji">✈️</span>
+                            <span id="quote-figure" class="font-chunky text-xs sm:text-sm bg-amber-200 border-2 border-gray-800 px-3 py-0.5 rounded-full text-gray-900">
+                                Eyang B.J. Habibie
+                            </span>
+                        </div>
+                        
+                        <p id="quote-text" class="font-chunky text-sm sm:text-base text-gray-900 leading-relaxed my-2">
+                            "Eyang Habibie pernah berkata: 'Keberhasilan bukanlah milik orang yang pintar, keberhasilan adalah kepunyaan mereka yang senantiasa berusaha.'"
+                        </p>
+                        
+                        <div id="quote-comment" class="mt-2 text-xs font-bold bg-sky-100 text-sky-900 border-2 border-gray-800 p-2.5 rounded-xl leading-snug">
+                            💡 Note buat kamu: Jadi kalau sekarang rasanya pusing dan capek, itu tandanya kamu lagi di jalan yang bener buat berhasil! Gasken terus!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <button onclick="spinGachaQuote()" class="w-full neo-btn bg-amber-300 hover:bg-amber-400 py-3.5 px-6 rounded-2xl font-chunky text-lg sm:text-xl text-gray-900 flex items-center justify-center gap-2">
+                        <span>🎲</span> PUTAR KAPSUL SEMANGAT!
+                    </button>
+                    <button onclick="copyCurrentQuote()" class="w-full neo-btn bg-white hover:bg-sky-50 py-2.5 px-4 rounded-xl font-bold text-xs sm:text-sm text-gray-800 flex items-center justify-center gap-2">
+                        <span>📋</span> <span id="copy-btn-text">Simpan / Copy Quote Tokoh Ini</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- 4. MINI-GAME BASMI PENGHALANG MIMPI -->
+            <section class="bg-gradient-to-b from-rose-100 to-amber-100 neo-box rounded-3xl p-6 flex flex-col justify-between relative">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-white border-2 border-gray-800 px-3 py-1 rounded-full font-chunky text-xs text-rose-700 shadow-[2px_2px_0px_#1F2937]">
+                            🥊 Arena Basmi Rintangan
+                        </span>
+                        <span class="bg-gray-900 text-amber-300 font-chunky text-xs px-3 py-1 rounded-lg">
+                            Rintangan K.O: <span id="ko-count">0</span> 💥
+                        </span>
+                    </div>
+
+                    <h2 class="text-2xl sm:text-3xl font-chunky text-gray-900 mb-1">
+                        BASMI PENGHALANG MIMPI! 🔨
+                    </h2>
+                    <p class="text-xs sm:text-sm font-bold text-gray-700 mb-4">
+                        Ada rasa minder, capek, atau overthinking yang ganggu fokus kamu? Klik berkali-kali sampe rintangannya mental jauh!
+                    </p>
+
+                    <!-- Victory Banner (Hidden until all defeated) -->
+                    <div id="victory-banner" class="hidden bg-emerald-200 neo-box rounded-2xl p-4 text-center mb-3 animate-bounce">
+                        <div class="text-3xl mb-1">🏆🎉🚀</div>
+                        <p class="font-chunky text-sm sm:text-base text-gray-900">
+                            MANTAP! Semua penghalang mimpi udah rata sama tanah! Sekarang jalan kamu makin mulus buat sukses! 🔥
+                        </p>
+                    </div>
+
+                    <!-- Monster Grid Arena -->
+                    <div id="monster-arena" class="grid grid-cols-2 gap-3 my-2">
+                        <!-- Generated dynamically by JS -->
+                    </div>
+                </div>
+
+                <div class="mt-4 pt-3 border-t-2 border-dashed border-gray-800/30 flex items-center justify-between">
+                    <span class="text-xs font-bold text-gray-700">Masih ada beban pikiran yang lewat?</span>
+                    <button onclick="spawnMonsters(true)" class="neo-btn bg-cyan-200 hover:bg-cyan-300 px-4 py-2 rounded-xl font-chunky text-xs sm:text-sm text-gray-900">
+                        🔄 Munculin & Sikat Lagi!
+                    </button>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- 5. TOMBOL INTERAKTIF: MASIH KEPIKIRAN BUAT NYERAH? -->
+        <section class="bg-gradient-to-r from-sky-200 via-indigo-100 to-emerald-200 neo-box rounded-3xl p-6 sm:p-8 text-center relative overflow-hidden">
+            <div class="max-w-2xl mx-auto space-y-4 relative z-10">
+                <div class="inline-block bg-white text-indigo-700 border-2 border-gray-800 font-chunky text-xs px-3.5 py-1 rounded-full shadow-[2px_2px_0px_#1F2937]">
+                    ⚡ CEK KOMITMEN PEJUANG MIMPI
+                </div>
+                <h2 class="text-2xl sm:text-4xl font-chunky text-gray-900">
+                    GIMANA? SIAP GASKEN KEJAR MIMPI LAGI KAN? 🔥
+                </h2>
+                <p class="font-bold text-gray-700 text-xs sm:text-base">
+                    Kalau kamu iseng kepikiran mau nyerah, coba aja klik tombol abu-abu di kanan itu kalau bisa kena! 😜
+                </p>
+
+                <!-- Buttons Area -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-5 pt-4 min-h-[115px] relative" id="runaway-zone">
+                    <!-- READY & GASKEN BUTTON -->
+                    <button onclick="triggerEmergencyHype()" class="neo-btn bg-amber-300 hover:bg-amber-400 text-gray-900 font-chunky text-base sm:text-xl px-7 py-4 rounded-2xl flex items-center gap-3 animate-pulse">
+                        <span>🚀</span> Siap Gasken Pantang Mundur! ✨
+                    </button>
+
+                    <!-- RUNAWAY GIVE UP BUTTON -->
+                    <button id="lazy-btn" onmouseover="evadeLazyButton(event)" ontouchstart="evadeLazyButton(event)" onclick="caughtLazyButton()" class="neo-btn bg-gray-200 text-gray-700 font-chunky text-xs sm:text-sm px-4 py-3 rounded-xl transition-all duration-150">
+                        🏳️ Mau Nyerah Aja Deh...
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. KARTU PEJUANG MIMPI & VOUCHER SUPPORT SYSTEM -->
+        <section class="bg-emerald-100 neo-box rounded-3xl p-6 sm:p-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                <div class="md:col-span-5 space-y-4">
+                    <span class="bg-sky-400 text-gray-900 border-2 border-gray-800 px-3 py-1 rounded-full font-chunky text-xs shadow-[2px_2px_0px_#1F2937]">
+                        🎟️ Voucher Support System
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-chunky text-gray-900 leading-tight">
+                        KARTU RESMI PEJUANG MIMPI & KUPON TRAKTIRAN! 🏆
+                    </h2>
+                    <p class="text-xs sm:text-sm font-bold text-gray-700">
+                        Karena kamu udah keren banget berjuang ngejar targetmu, kamu berhak klaim Voucher Support System ini! Tulis nama & mimpimu, terus klaim ke WA ya!
+                    </p>
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block font-chunky text-xs text-gray-800 mb-1">Nama Pejuang Mimpi:</label>
+                            <input type="text" id="cert-name-input" oninput="updateCertificate()" placeholder="Ketik nama kamu di sini..." value="Calon Orang Sukses" maxlength="30" class="w-full neo-box bg-white px-4 py-2.5 rounded-xl font-chunky text-sm sm:text-base focus:outline-none focus:ring-4 focus:ring-sky-300">
+                        </div>
+                        <div>
+                            <label class="block font-chunky text-xs text-gray-800 mb-1">Mimpi / Target yang Lagi Dikejar:</label>
+                            <input type="text" id="cert-dream-input" oninput="updateCertificate()" placeholder="Contoh: Lulus Tepat Waktu / Lolos Seleksi / Karir Impian" value="Tembus Target & Sukses Besar!" maxlength="45" class="w-full neo-box bg-white px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm focus:outline-none focus:ring-4 focus:ring-sky-300">
+                        </div>
+                        <div>
+                            <label class="block font-chunky text-xs text-gray-800 mb-1">Pilih Kupon Support System:</label>
+                            <select id="cert-goal-input" onchange="updateCertificate()" class="w-full neo-box bg-white px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm focus:outline-none focus:ring-4 focus:ring-sky-300 cursor-pointer">
+                                <option value="🎟️ Kupon Traktir Es Kopi / Matcha Pas Lagi Pusing Nugas!">🎟️ Kupon Traktir Es Kopi / Matcha Pas Lagi Pusing!</option>
+                                <option value="🎟️ Kupon Ditraktir Seblak / Cemilan Biar Fokus Lagi!">🎟️ Kupon Ditraktir Seblak / Cemilan Biar Fokus!</option>
+                                <option value="🎟️ Kupon Sesi Curhat & Keluh Kesah Perjuangan Tanpa Dijudge!">🎟️ Kupon Sesi Curhat Perjuangan Tanpa Dijudge!</option>
+                                <option value="🎟️ Kupon Traktir Makan Enak Pas Target Udah Tercapai!">🎟️ Kupon Traktir Makan Enak Pas Target Tercapai!</option>
+                            </select>
+                        </div>
+                        <div class="pt-1 flex flex-col gap-2">
+                            <button onclick="claimToWhatsApp()" class="w-full neo-btn bg-sky-400 hover:bg-sky-300 text-gray-900 py-3 px-4 rounded-xl font-chunky text-sm sm:text-base flex items-center justify-center gap-2">
+                                <span>📲</span> COPY KLAIM VOUCHER BUAT DIKIRIM KE WA!
+                            </button>
+                            <span id="wa-copy-status" class="text-center font-bold text-xs text-emerald-900 hidden">
+                                ✅ Format klaim udah ke-copy! Tinggal Paste & kirim ke chat WA ya! 🚀
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certificate Preview Card -->
+                <div class="md:col-span-7">
+                    <div id="certificate-card" class="bg-white neo-box-lg rounded-3xl p-5 sm:p-7 relative overflow-hidden">
+                        <!-- Decorative corner badge -->
+                        <div class="absolute -top-4 -right-4 w-16 h-16 bg-amber-300 border-3 border-gray-800 rounded-full flex items-end justify-start p-2.5 rotate-12" style="border-width: 3px;">
+                            <span class="text-xl">🏆</span>
+                        </div>
+
+                        <div class="border-3 border-dashed border-sky-500 rounded-2xl p-5 text-center space-y-3 bg-gradient-to-b from-sky-50/70 to-amber-50/50" style="border-width: 3px;">
+                            <div class="text-[11px] font-chunky uppercase tracking-wider bg-sky-400 text-gray-900 inline-block px-3 py-1 rounded-full border border-gray-800">
+                                ✨ SERTIFIKAT & VOUCHER PEJUANG MIMPI ✨
+                            </div>
+                            <h3 class="text-lg sm:text-2xl font-chunky text-gray-900">
+                                PENGHARGAAN PANTANG MENYERAH
+                            </h3>
+                            <p class="text-xs font-bold text-gray-500">Diberikan dengan penuh apresiasi kepada:</p>
+                            
+                            <div id="cert-name-display" class="text-2xl sm:text-3xl font-chunky text-sky-700 underline decoration-wavy decoration-amber-400 py-1 break-words">
+                                Calon Orang Sukses
+                            </div>
+
+                            <div class="text-xs font-bold text-gray-700">
+                                Yang sedang berjuang keras mengejar target:
+                                <span id="cert-dream-display" class="block font-chunky text-sm sm:text-base text-gray-900 mt-0.5">
+                                    🌟 Tembus Target & Sukses Besar!
+                                </span>
+                            </div>
+
+                            <p class="text-xs font-bold text-gray-600 max-w-md mx-auto pt-1">
+                                Berhak menukarkan Voucher Support System berikut kapan saja:
+                            </p>
+
+                            <div id="cert-goal-display" class="bg-amber-200 border-2 border-gray-800 px-4 py-2 rounded-xl font-chunky text-xs sm:text-sm text-gray-900 inline-block shadow-[3px_3px_0px_#1F2937]">
+                                "🎟️ Kupon Traktir Es Kopi / Matcha Pas Lagi Pusing Nugas!"
+                            </div>
+
+                            <div class="pt-4 flex items-center justify-between text-left border-t-2 border-sky-200 text-xs font-bold">
+                                <div>
+                                    <span class="block text-gray-400">Status Energi Saat Ini:</span>
+                                    <span id="cert-energy-badge" class="font-chunky text-sky-700">20% (Siap Gasken!)</span>
+                                </div>
+                                <div class="text-right">
+                                    <span class="block text-gray-400">Disahkan Oleh,</span>
+                                    <span class="font-chunky text-gray-900">Partner Support System Terbaikmu 🤝✨</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="text-center pt-4 pb-8 font-bold text-sm text-gray-700">
+            <p class="font-chunky text-base text-sky-700">TETAP SEMANGAT NGEJAR MIMPINYA YA, CALON ORANG SUKSES! 🚀🌟</p>
+            <p class="text-xs mt-1">Pelan-pelan nggak apa-apa, yang penting jangan berhenti melangkah! 💪</p>
+        </footer>
+
+    </div>
+
+    <!-- HYPE MOTIVATION MODAL OVERLAY -->
+    <div id="hype-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 party-active bg-opacity-95">
+        <div class="bg-white neo-box-lg rounded-3xl max-w-lg w-full p-6 sm:p-8 text-center relative animate-float">
+            <div class="text-5xl sm:text-6xl mb-3">🚀🏆🎉🔥</div>
+            <div class="bg-amber-300 text-gray-900 border-2 border-gray-800 px-3.5 py-1 rounded-full font-chunky text-xs inline-block mb-3">
+                ✨ MODE PEJUANG MIMPI 1000% AKTIF! ✨
+            </div>
+            <h2 class="text-2xl sm:text-4xl font-chunky leading-tight text-gray-900 mb-3">
+                NAH GITU DONG! MENTAL CALON ORANG SUKSES! 🙌
+            </h2>
+            <p class="font-bold text-sm sm:text-base text-gray-700 mb-6 bg-sky-50 p-4 rounded-2xl border-2 border-sky-300 leading-relaxed">
+                "Perjalanan ngejar mimpi emang kadang bikin pusing dan nguras tenaga. Tapi inget ya, semua usaha keras yang kamu tabung hari ini pasti bakal berbuah manis pada waktunya. Istirahat kalau capek, terus sikat lagi targetnya! Kamu pasti bisa! 🌟💪"
+            </p>
+            <button onclick="closeEmergencyHype()" class="neo-btn bg-emerald-300 hover:bg-emerald-400 text-gray-900 px-6 py-3.5 rounded-2xl font-chunky text-base sm:text-lg w-full">
+                🔥 Siap! Gasken Lanjut Berjuang! 🚀
+            </button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // ==========================================
+        // STATE & DATA
+        // ==========================================
+        let energyLevel = 20;
+        let soundEnabled = true;
+        let gachaCounter = 1;
+        let koCounter = 0;
+        let audioCtx = null;
+
+        // KAPSUL QUOTES TOKOH TERKENAL DENGAN GAYA SANTAI
+        const quotesDB = [
+            {
+                emoji: "✈️",
+                figure: "Eyang B.J. Habibie",
+                text: "Eyang Habibie pernah berkata: 'Keberhasilan bukanlah milik orang yang pintar, keberhasilan adalah kepunyaan mereka yang senantiasa berusaha.'",
+                comment: "💡 Note buat kamu: Jadi kalau sekarang rasanya pusing dan capek, itu tandanya kamu lagi di jalan yang bener buat berhasil! Gasken terus!"
+            },
+            {
+                emoji: "🎙️",
+                figure: "Najwa Shihab (Mbak Nana)",
+                text: "Mbak Nana pernah bilang: 'Hanya pendidikan dan mimpi yang bisa menyelamatkan masa depan. Jangan pernah takut bermimpi besar.'",
+                comment: "💡 Note buat kamu: Mimpi kamu yang gede itu valid banget! Jangan kasih kendor, sikat terus rintangannya satu-satu!"
+            },
+            {
+                emoji: "📚",
+                figure: "Maudy Ayunda",
+                text: "Maudy Ayunda pernah berkata: 'Keraguan itu adalah musuh terbesar dari potensi kita sendiri.'",
+                comment: "💡 Note buat kamu: Jangan minder duluan ya! Kapasitas dan kemampuan kamu tuh jauh lebih keren dari yang kamu bayangin!"
+            },
+            {
+                emoji: "🌅",
+                figure: "R.A. Kartini",
+                text: "Ibu Kartini pernah menulis: 'Habis gelap terbitlah terang. Teruslah bermimpi, bermimpilah selama engkau dapat bermimpi!'",
+                comment: "💡 Note buat kamu: Fase pusing dan lelah hari ini cuma mendung lewat doang kok, bentar lagi juga terbit terangnya!"
+            },
+            {
+                emoji: "🏰",
+                figure: "Walt Disney",
+                text: "Walt Disney pernah berkata: 'Semua impian kita bisa menjadi nyata jika kita memiliki keberanian untuk mengejarnya.'",
+                comment: "💡 Note buat kamu: Dan kamu udah berani mulai langkah sejauh ini, itu aja udah keren banget tau!"
+            },
+            {
+                emoji: "🏔️",
+                figure: "Nelson Mandela",
+                text: "Nelson Mandela pernah bilang: 'Segala sesuatu selalu terlihat mustahil sampai semuanya benar-benar selesai.'",
+                comment: "💡 Note buat kamu: Sekarang mungkin kelihatannya berat banget, tapi nanti pas udah lewat kamu bakal bangga banget sama diri sendiri!"
+            },
+            {
+                emoji: "🌱",
+                figure: "Sri Mulyani Indrawati",
+                text: "Ibu Sri Mulyani pernah berpesan: 'Jangan pernah lelah mencintai proses dan teruslah belajar menjadi versi terbaik dirimu.'",
+                comment: "💡 Note buat kamu: Nggak perlu bandingin progresmu sama orang lain, fokus aja bertumbuh pelan-pelan tiap hari!"
+            },
+            {
+                emoji: "⚡",
+                figure: "J.K. Rowling",
+                text: "J.K. Rowling pernah berkata: 'Kegagalan dan rintangan adalah batu loncatan menuju kesuksesan yang sesungguhnya.'",
+                comment: "💡 Note buat kamu: Kalau ada rencana yang belum mulus, santai aja! Itu cuma plot twist sebelum happy ending!"
+            },
+            {
+                emoji: "💡",
+                figure: "Thomas Alva Edison",
+                text: "Thomas Edison pernah berkata: 'Banyak kegagalan terjadi karena orang tidak sadar betapa dekatnya mereka dengan kesuksesan saat mereka menyerah.'",
+                comment: "💡 Note buat kamu: Dikit lagi nyampe garis finish tuh, jangan nyerah di tengah jalan ya!"
+            },
+            {
+                emoji: "✍️",
+                figure: "Pramoedya Ananta Toer",
+                text: "Pramoedya Ananta Toer pernah berkata: 'Orang boleh pandai setinggi langit, tapi selama ia tidak berkarya, ia akan hilang dari sejarah.'",
+                comment: "💡 Note buat kamu: Terus berproses dan ciptain sejarah sukses versi kamu sendiri!"
+            }
+        ];
+
+        const monstersDB = [
+            { id: 1, name: "Rasa Insecure & Minder 🙈", emoji: "🙈", bg: "bg-rose-200", maxHp: 3 },
+            { id: 2, name: "Overthinking Masa Depan 🌀", emoji: "🌀", bg: "bg-purple-200", maxHp: 3 },
+            { id: 3, name: "Target & Tugas Numpuk 📚", emoji: "📚", bg: "bg-amber-200", maxHp: 3 },
+            { id: 4, name: "Rasa Capek & Burnout 🥵", emoji: "🥵", bg: "bg-sky-200", maxHp: 3 }
+        ];
+
+        const hitWords = ["BLETAK!! 💥", "MENTAL JAUH! 🚀", "BONK! 🔨", "MINGGIR SANA! 🔥", "AUTO K.O! ⚡"];
+        const cuteEmojis = ["🚀", "✨", "🧋", "🔥", "🌟", "💪", "🏆"];
+
+        // ==========================================
+        // WEB AUDIO API SYNTHESIZER
+        // ==========================================
+        function initAudio() {
+            if (!audioCtx) {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                audioCtx = new AudioContext();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        }
+
+        function playSound(type) {
+            if (!soundEnabled) return;
+            try {
+                initAudio();
+                const now = audioCtx.currentTime;
+
+                if (type === 'pop') {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(520, now);
+                    osc.frequency.exponentialRampToValueAtTime(880, now + 0.12);
+                    gain.gain.setValueAtTime(0.2, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.12);
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start(now);
+                    osc.stop(now + 0.12);
+                } 
+                else if (type === 'bonk') {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(400, now);
+                    osc.frequency.exponentialRampToValueAtTime(160, now + 0.14);
+                    gain.gain.setValueAtTime(0.28, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.14);
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start(now);
+                    osc.stop(now + 0.14);
+                }
+                else if (type === 'gacha') {
+                    const notes = [523.25, 659.25, 783.99, 1046.50];
+                    notes.forEach((freq, idx) => {
+                        const osc = audioCtx.createOscillator();
+                        const gain = audioCtx.createGain();
+                        osc.type = 'sine';
+                        osc.frequency.setValueAtTime(freq, now + idx * 0.07);
+                        gain.gain.setValueAtTime(0.18, now + idx * 0.07);
+                        gain.gain.exponentialRampToValueAtTime(0.01, now + idx * 0.07 + 0.18);
+                        osc.connect(gain);
+                        gain.connect(audioCtx.destination);
+                        osc.start(now + idx * 0.07);
+                        osc.stop(now + idx * 0.07 + 0.18);
+                    });
+                }
+                else if (type === 'fanfare') {
+                    const notes = [523.25, 659.25, 783.99, 1046.50, 1318.51];
+                    notes.forEach((freq, idx) => {
+                        const osc = audioCtx.createOscillator();
+                        const gain = audioCtx.createGain();
+                        osc.type = 'triangle';
+                        osc.frequency.setValueAtTime(freq, now + idx * 0.08);
+                        gain.gain.setValueAtTime(0.2, now + idx * 0.08);
+                        gain.gain.exponentialRampToValueAtTime(0.01, now + idx * 0.08 + 0.25);
+                        osc.connect(gain);
+                        gain.connect(audioCtx.destination);
+                        osc.start(now + idx * 0.08);
+                        osc.stop(now + idx * 0.08 + 0.25);
+                    });
+                }
+            } catch (e) {}
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            document.getElementById('sound-icon').innerText = soundEnabled ? '🔊' : '🔇';
+            document.getElementById('sound-text').innerText = soundEnabled ? 'Efek Suara Seru: ON' : 'Efek Suara Seru: OFF';
+            if (soundEnabled) playSound('pop');
+        }
+
+        // ==========================================
+        // 2. BATERAI SEMANGAT & BOOSTER LOGIC
+        // ==========================================
+        function addEnergy(amount) {
+            const wasBelow100 = energyLevel < 100;
+            energyLevel = Math.min(100, energyLevel + amount);
+
+            const bar = document.getElementById('energy-bar');
+            const pctText = document.getElementById('energy-percent-text');
+            const titleEl = document.getElementById('energy-title');
+            const emojiEl = document.getElementById('mood-emoji');
+            const certBadge = document.getElementById('cert-energy-badge');
+
+            bar.style.width = energyLevel + '%';
+            pctText.innerText = energyLevel + '%';
+
+            let statusTitle = "";
+            let moodEmoji = "🔋";
+
+            if (energyLevel < 35) {
+                statusTitle = `Mode Kucing Rebahan / Lowbat 😴 (${energyLevel}%)`;
+                moodEmoji = "🔋";
+            } else if (energyLevel < 60) {
+                statusTitle = `Mulai Panas & Fokus Lagi Nih ⚡ (${energyLevel}%)`;
+                moodEmoji = "⚡";
+            } else if (energyLevel < 85) {
+                statusTitle = `Mode Pejuang Tangguh Siap Tempur! 🔥 (${energyLevel}%)`;
+                moodEmoji = "🔥";
+            } else if (energyLevel < 100) {
+                statusTitle = `Hampir Full Power 100%! 🚀 (${energyLevel}%)`;
+                moodEmoji = "🚀";
+            } else {
+                statusTitle = `Mode Siap Taklukkan Dunia 1000%! 🏆🌟 (100%)`;
+                moodEmoji = "🏆";
+            }
+
+            titleEl.innerText = statusTitle;
+            emojiEl.innerText = moodEmoji;
+            certBadge.innerText = statusTitle;
+
+            if (wasBelow100 && energyLevel === 100) {
+                playSound('fanfare');
+                fireConfetti(80);
+            }
+        }
+
+        function quickBoost(amount, label, reactionMsg) {
+            playSound('gacha');
+            addEnergy(amount);
+
+            const reactionBox = document.getElementById('boost-reaction');
+            reactionBox.innerText = reactionMsg;
+            reactionBox.classList.remove('shake-screen');
+            void reactionBox.offsetWidth;
+            reactionBox.classList.add('shake-screen');
+
+            const randEmoji = cuteEmojis[Math.floor(Math.random() * cuteEmojis.length)];
+            spawnFloatingText(window.innerWidth / 2, 220, `${randEmoji} +${amount}% ${label}`);
+            fireConfetti(25);
+        }
+
+        // ==========================================
+        // 3. GACHA KAPSUL QUOTES TOKOH TERKENAL
+        // ==========================================
+        let lastQuoteIdx = 0;
+
+        function spinGachaQuote() {
+            playSound('gacha');
+            addEnergy(15);
+            gachaCounter++;
+            document.getElementById('gacha-count').innerText = gachaCounter;
+
+            const quoteBox = document.getElementById('quote-box');
+            quoteBox.classList.remove('shake-screen');
+            void quoteBox.offsetWidth;
+            quoteBox.classList.add('shake-screen');
+
+            let nextIdx = Math.floor(Math.random() * quotesDB.length);
+            if (nextIdx === lastQuoteIdx) {
+                nextIdx = (nextIdx + 1) % quotesDB.length;
+            }
+            lastQuoteIdx = nextIdx;
+
+            const selected = quotesDB[nextIdx];
+            document.getElementById('quote-emoji').innerText = selected.emoji;
+            document.getElementById('quote-figure').innerText = selected.figure;
+            document.getElementById('quote-text').innerText = `"${selected.text}"`;
+            document.getElementById('quote-comment').innerText = selected.comment;
+
+            fireConfetti(30);
+        }
+
+        function copyCurrentQuote() {
+            const text = document.getElementById('quote-text').innerText;
+            const comment = document.getElementById('quote-comment').innerText;
+            const fullText = `${text}\n${comment} 🚀✨`;
+
+            const tempInput = document.createElement('textarea');
+            tempInput.value = fullText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            playSound('pop');
+            const btnText = document.getElementById('copy-btn-text');
+            btnText.innerText = "✅ Quote Udah Ke-copy! Siap Dipajang! 🔥";
+            setTimeout(() => {
+                btnText.innerText = "Simpan / Copy Quote Tokoh Ini";
+            }, 2200);
+        }
+
+        // ==========================================
+        // 4. MINI-GAME BASMI PENGHALANG MIMPI
+        // ==========================================
+        let defeatedCount = 0;
+
+        function spawnMonsters(playFx = false) {
+            if (playFx) playSound('pop');
+            defeatedCount = 0;
+            document.getElementById('victory-banner').classList.add('hidden');
+            const arena = document.getElementById('monster-arena');
+            arena.innerHTML = '';
+
+            monstersDB.forEach((m) => {
+                const card = document.createElement('button');
+                card.dataset.hp = m.maxHp;
+                card.dataset.maxHp = m.maxHp;
+                card.dataset.ko = "false";
+                card.className = `${m.bg} neo-btn rounded-2xl p-3.5 flex flex-col items-center justify-between text-center min-h-[130px] relative transition-all duration-200`;
+                
+                card.innerHTML = `
+                    <span class="text-3xl sm:text-4xl mb-1 pointer-events-none">${m.emoji}</span>
+                    <span class="font-chunky text-xs sm:text-sm leading-snug text-gray-900 pointer-events-none mb-2">${m.name}</span>
+                    <div class="w-full bg-white/80 h-3 rounded-full border border-gray-800 overflow-hidden p-0.5 pointer-events-none">
+                        <div class="hp-bar h-full bg-rose-500 rounded-full transition-all duration-200" style="width: 100%;"></div>
+                    </div>
+                `;
+
+                card.onclick = function(e) {
+                    punchMonster(card, e);
+                };
+
+                arena.appendChild(card);
+            });
+        }
+
+        function punchMonster(cardEl, event) {
+            if (cardEl.dataset.ko === "true") return;
+
+            let hp = parseInt(cardEl.dataset.hp) - 1;
+            const maxHp = parseInt(cardEl.dataset.maxHp);
+            cardEl.dataset.hp = hp;
+
+            const hpBar = cardEl.querySelector('.hp-bar');
+            if (hpBar) {
+                hpBar.style.width = `${(hp / maxHp) * 100}%`;
+            }
+
+            playSound('bonk');
+            addEnergy(10);
+
+            const rect = cardEl.getBoundingClientRect();
+            const hitX = event.clientX || (rect.left + rect.width / 2);
+            const hitY = event.clientY || (rect.top + rect.height / 2);
+            const word = hitWords[Math.floor(Math.random() * hitWords.length)];
+            spawnFloatingText(hitX, hitY, word);
+
+            cardEl.classList.remove('shake-screen');
+            void cardEl.offsetWidth;
+            cardEl.classList.add('shake-screen');
+
+            if (hp <= 0) {
+                cardEl.dataset.ko = "true";
+                koCounter++;
+                defeatedCount++;
+                document.getElementById('ko-count').innerText = koCounter;
+
+                cardEl.style.transform = `scale(0.85)`;
+                setTimeout(() => {
+                    cardEl.innerHTML = `
+                        <span class="text-2xl mb-1">✅🔥</span>
+                        <span class="font-chunky text-xs text-emerald-800">RINTANGAN LEWAT! 🚀</span>
+                    `;
+                    cardEl.className = "bg-white/70 border-2 border-dashed border-emerald-500 rounded-2xl p-3 flex flex-col items-center justify-center min-h-[130px] cursor-default";
+                    cardEl.style.transform = "none";
+
+                    if (defeatedCount === monstersDB.length) {
+                        playSound('fanfare');
+                        fireConfetti(70);
+                        document.getElementById('victory-banner').classList.remove('hidden');
+                    }
+                }, 180);
+            }
+        }
+
+        function spawnFloatingText(x, y, text) {
+            const container = document.getElementById('hit-effects-container');
+            const badge = document.createElement('div');
+            badge.className = 'fixed z-50 bg-amber-300 border-2 border-gray-800 px-3 py-1 rounded-full font-chunky text-sm sm:text-base text-gray-900 shadow-[3px_3px_0px_#1F2937] comic-pop';
+            badge.style.left = `${Math.max(20, Math.min(window.innerWidth - 180, x - 50))}px`;
+            badge.style.top = `${Math.max(20, y - 20)}px`;
+            badge.innerText = text;
+
+            container.appendChild(badge);
+            setTimeout(() => {
+                badge.remove();
+            }, 750);
+        }
+
+        // ==========================================
+        // 5. TOMBOL NYERAH YANG SUKA KABUR
+        // ==========================================
+        const lazyTaunts = [
+            "Eits gak boleh nyerah! 😜",
+            "Mimpi udah di depan mata tuh! 🚀",
+            "Tombol nyerahnya lagi rusak! 🚫",
+            "Masa kalah sama keadaan? Sikat! 🔥",
+            "Klik tombol kuning aja bro/bestie! ✨"
+        ];
+
+        function evadeLazyButton(e) {
+            if (e) e.preventDefault();
+            playSound('pop');
+            const btn = document.getElementById('lazy-btn');
+            const randomX = (Math.random() - 0.5) * 200;
+            const randomY = (Math.random() - 0.5) * 85;
+            btn.style.transform = `translate(${randomX}px, ${randomY}px) rotate(${(Math.random() - 0.5) * 12}deg)`;
+            btn.innerText = lazyTaunts[Math.floor(Math.random() * lazyTaunts.length)];
+        }
+
+        function caughtLazyButton() {
+            triggerEmergencyHype();
+        }
+
+        function triggerEmergencyHype() {
+            playSound('fanfare');
+            addEnergy(100);
+            fireConfetti(100);
+            const modal = document.getElementById('hype-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeEmergencyHype() {
+            playSound('pop');
+            const modal = document.getElementById('hype-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            fireConfetti(45);
+        }
+
+        // ==========================================
+        // 6. KARTU PEJUANG MIMPI & VOUCHER GENERATOR
+        // ==========================================
+        function updateCertificate() {
+            const nameVal = document.getElementById('cert-name-input').value.trim();
+            const dreamVal = document.getElementById('cert-dream-input').value.trim();
+            const goalVal = document.getElementById('cert-goal-input').value;
+
+            document.getElementById('cert-name-display').innerText = nameVal || "Calon Orang Sukses";
+            document.getElementById('cert-dream-display').innerText = `🌟 ${dreamVal || "Tembus Target & Sukses Besar!"}`;
+            document.getElementById('cert-goal-display').innerText = `"${goalVal}"`;
+        }
+
+        function claimToWhatsApp() {
+            playSound('fanfare');
+            addEnergy(30);
+            fireConfetti(65);
+
+            const nameVal = document.getElementById('cert-name-input').value.trim() || "Pejuang Mimpi";
+            const dreamVal = document.getElementById('cert-dream-input').value.trim() || "Target Besarku";
+            const couponVal = document.getElementById('cert-goal-input').value;
+
+            const claimMessage = `Halo! Aku (${nameVal}) udah mampir ke Posko Support System Pejuang Mimpi buatanmu dan semangatku buat ngejar *"${dreamVal}"* udah balik 100%! 🚀🔥 Sekarang aku mau klaim Voucher Support System ini ya: *${couponVal}* 🙌 Jangan lupa ditepatin haha!`;
+
+            const tempInput = document.createElement('textarea');
+            tempInput.value = claimMessage;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            const statusEl = document.getElementById('wa-copy-status');
+            statusEl.classList.remove('hidden');
+
+            const card = document.getElementById('certificate-card');
+            card.classList.remove('shake-screen');
+            void card.offsetWidth;
+            card.classList.add('shake-screen');
+        }
+
+        // ==========================================
+        // CANVAS CONFETTI
+        // ==========================================
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        function fireConfetti(count = 50) {
+            const colors = ['#38BDF8', '#FBBF24', '#34D399', '#A78BFA', '#FB7185', '#FFFFFF'];
+            for (let i = 0; i < count; i++) {
+                particles.push({
+                    x: window.innerWidth / 2 + (Math.random() - 0.5) * 240,
+                    y: window.innerHeight / 2 + (Math.random() - 0.5) * 120,
+                    vx: (Math.random() - 0.5) * 16,
+                    vy: (Math.random() - 1) * 16 - 3,
+                    size: Math.random() * 9 + 6,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    rotation: Math.random() * 360,
+                    vr: (Math.random() - 0.5) * 10,
+                    isCircle: Math.random() > 0.4
+                });
+            }
+        }
+
+        function updateConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                p.vy += 0.4; // soft gravity
+                p.rotation += p.vr;
+
+                ctx.save();
+                ctx.translate(p.x, p.y);
+                ctx.rotate((p.rotation * Math.PI) / 180);
+                ctx.fillStyle = p.color;
+                ctx.strokeStyle = '#1F2937';
+                ctx.lineWidth = 1.5;
+
+                if (p.isCircle) {
+                    ctx.beginPath();
+                    ctx.arc(0, 0, p.size / 2, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.stroke();
+                } else {
+                    ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+                    ctx.strokeRect(-p.size / 2, -p.size / 2, p.size, p.size);
+                }
+                ctx.restore();
+
+                if (p.y > canvas.height + 30) {
+                    particles.splice(i, 1);
+                }
+            }
+            requestAnimationFrame(updateConfetti);
+        }
+
+        // Initialize on window load
+        window.onload = function () {
+            spawnMonsters(false);
+            updateConfetti();
+        };
+    </script>
+</body>
+</html>
