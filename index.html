@@ -2,7 +2,7 @@
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Posko Support System Pejuang Mimpi 🚀✨</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -10,7 +10,7 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap"
       rel="stylesheet"
-    />ew
+    />
 
     <style>
       :root {
@@ -80,6 +80,7 @@
       .animate-marquee {
         display: flex;
         width: 200%;
+        white-space: nowrap;
         animation: marquee 20s linear infinite;
       }
 
@@ -192,7 +193,7 @@
       class="bg-amber-300 text-gray-900 border-b-4 border-gray-800 py-2 overflow-hidden sticky top-0 z-40 shadow-sm"
     >
       <div
-        class="animate-marquee font-chunky text-sm md:text-base tracking-wide"
+        class="animate-marquee font-chunky text-sm md:text-base tracking-wide flex items-center"
       >
         <span class="mx-4">🚀 POSKO SUPPORT SYSTEM PEJUANG MIMPI!</span>
         <span class="mx-4"
@@ -262,7 +263,7 @@
           <button
             id="sound-toggle"
             onclick="toggleSound()"
-            class="neo-btn bg-emerald-200 hover:bg-emerald-300 px-4 py-2.5 rounded-2xl font-chunky flex items-center gap-2 text-xs sm:text-sm text-gray-900"
+            class="neo-btn bg-emerald-200 hover:bg-emerald-300 px-4 py-2.5 rounded-2xl font-chunky flex items-center gap-2 text-xs sm:text-sm text-gray-900 w-full sm:w-auto justify-center"
           >
             <span id="sound-icon">🔊</span>
             <span id="sound-text">Efek Suara Seru: ON</span>
@@ -273,7 +274,7 @@
       <!-- 2. BAROMETER ENERGI PEJUANG MIMPI -->
       <section class="bg-white neo-box rounded-3xl p-5 sm:p-7 relative">
         <div
-          class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4"
+          class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4"
         >
           <div class="flex items-center gap-3">
             <span class="text-4xl sm:text-5xl animate-bounce" id="mood-emoji"
@@ -290,7 +291,7 @@
             </div>
           </div>
           <div
-            class="bg-sky-100 border-2 border-gray-800 px-4 py-2 rounded-2xl self-start sm:self-auto shadow-[3px_3px_0px_#1F2937]"
+            class="bg-sky-100 border-2 border-gray-800 px-4 py-2 rounded-2xl w-full md:w-auto shadow-[3px_3px_0px_#1F2937]"
           >
             <span
               class="text-[11px] font-extrabold uppercase block text-sky-700"
@@ -298,7 +299,7 @@
             >
             <span
               id="energy-title"
-              class="font-chunky text-sm sm:text-base text-gray-900"
+              class="font-chunky text-sm sm:text-base text-gray-900 block truncate"
               >Mode Kucing Rebahan / Lowbat 😴 (20%)</span
             >
           </div>
@@ -311,7 +312,7 @@
         >
           <div
             id="energy-bar"
-            class="h-full bg-gradient-to-r from-sky-400 via-amber-300 to-emerald-400 rounded-xl border-2 border-gray-800 transition-all duration-500 flex items-center justify-end pr-3"
+            class="h-full bg-gradient-to-r from-sky-400 via-amber-300 to-emerald-400 rounded-xl border-2 border-gray-800 transition-all duration-500 flex items-center justify-end pr-3 min-w-[40px]"
             style="width: 20%"
           >
             <span
@@ -343,12 +344,12 @@
                 'Sruput dulu es matcha atau kopi dinginnya! Otak langsung seger lagi siap mikir jernih! 🧋❄️',
               )
             "
-            class="neo-btn bg-emerald-200 hover:bg-emerald-300 p-3 rounded-2xl font-chunky text-xs sm:text-sm flex items-center justify-center gap-2 text-left"
+            class="neo-btn bg-emerald-200 hover:bg-emerald-300 p-3 rounded-2xl font-chunky text-xs sm:text-sm flex items-center justify-start sm:justify-center gap-3 text-left"
           >
-            <span class="text-2xl">🧋</span>
+            <span class="text-2xl sm:text-3xl shrink-0">🧋</span>
             <div>
-              <span class="block text-gray-900">Seduh Matcha / Kopi</span>
-              <span class="text-[11px] font-bold text-emerald-900"
+              <span class="block text-gray-900 leading-tight">Seduh Matcha / Kopi</span>
+              <span class="text-[11px] font-bold text-emerald-900 block mt-0.5"
                 >+25% Fokus Naik!</span
               >
             </div>
@@ -362,12 +363,12 @@
                 'Makan yang enak dulu biar mood nggak berantakan! Perut kenyang, semangat berjuang lanjut lagi! 🍜🔥',
               )
             "
-            class="neo-btn bg-amber-200 hover:bg-amber-300 p-3 rounded-2xl font-chunky text-xs sm:text-sm flex items-center justify-center gap-2 text-left"
+            class="neo-btn bg-amber-200 hover:bg-amber-300 p-3 rounded-2xl font-chunky text-xs sm:text-sm flex items-center justify-start sm:justify-center gap-3 text-left"
           >
-            <span class="text-2xl">🍜</span>
+            <span class="text-2xl sm:text-3xl shrink-0">🍜</span>
             <div>
-              <span class="block text-gray-900">Asupan Seblak / Jajan</span>
-              <span class="text-[11px] font-bold text-amber-900"
+              <span class="block text-gray-900 leading-tight">Asupan Seblak / Jajan</span>
+              <span class="text-[11px] font-bold text-amber-900 block mt-0.5"
                 >+25% Tenaga Naik!</span
               >
             </div>
@@ -381,12 +382,12 @@
                 'Tarik napas dalam-dalam... hembuskan! Nggak usah buru-buru, istirahat sejenak itu bagian dari proses kok! 🌿🧘‍♀️',
               )
             "
-            class="neo-btn bg-sky-200 hover:bg-sky-300 p-3 rounded-2xl font-chunky text-xs sm:text-sm flex items-center justify-center gap-2 text-left"
+            class="neo-btn bg-sky-200 hover:bg-sky-300 p-3 rounded-2xl font-chunky text-xs sm:text-sm flex items-center justify-start sm:justify-center gap-3 text-left"
           >
-            <span class="text-2xl">🧘‍♀️</span>
+            <span class="text-2xl sm:text-3xl shrink-0">🧘‍♀️</span>
             <div>
-              <span class="block text-gray-900">Tarik Napas & Rehat</span>
-              <span class="text-[11px] font-bold text-sky-900"
+              <span class="block text-gray-900 leading-tight">Tarik Napas & Rehat</span>
+              <span class="text-[11px] font-bold text-sky-900 block mt-0.5"
                 >+30% Pikiran Tenang!</span
               >
             </div>
@@ -400,12 +401,12 @@
                 'Bayangin betapa bangganya diri kamu di masa depan pas semua perjuangan hari ini akhirnya terbayar lunas! 🚀🏆',
               )
             "
-            class="neo-btn bg-purple-200 hover:bg-purple-300 p-3 rounded-2xl font-chunky text-xs sm:text-sm flex items-center justify-center gap-2 text-left"
+            class="neo-btn bg-purple-200 hover:bg-purple-300 p-3 rounded-2xl font-chunky text-xs sm:text-sm flex items-center justify-start sm:justify-center gap-3 text-left"
           >
-            <span class="text-2xl">🚀</span>
+            <span class="text-2xl sm:text-3xl shrink-0">🚀</span>
             <div>
-              <span class="block text-gray-900">Ingat Mimpi Besar</span>
-              <span class="text-[11px] font-bold text-purple-900"
+              <span class="block text-gray-900 leading-tight">Ingat Mimpi Besar</span>
+              <span class="text-[11px] font-bold text-purple-900 block mt-0.5"
                 >+40% Motivasi Full!</span
               >
             </div>
@@ -417,10 +418,10 @@
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <!-- 3. MESIN GACHA KAPSUL QUOTES TOKOH TERKENAL -->
         <section
-          class="bg-gradient-to-b from-amber-100 via-sky-100 to-indigo-100 neo-box rounded-3xl p-6 flex flex-col justify-between relative overflow-hidden"
+          class="bg-gradient-to-b from-amber-100 via-sky-100 to-indigo-100 neo-box rounded-3xl p-5 sm:p-6 flex flex-col justify-between relative overflow-hidden"
         >
           <div>
-            <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
               <span
                 class="bg-white border-2 border-gray-800 px-3 py-1 rounded-full font-chunky text-xs text-indigo-700 shadow-[2px_2px_0px_#1F2937]"
               >
@@ -433,7 +434,7 @@
               </span>
             </div>
 
-            <h2 class="text-2xl sm:text-3xl font-chunky text-gray-900 mb-2">
+            <h2 class="text-2xl sm:text-3xl font-chunky text-gray-900 mb-2 leading-tight">
               KAPSUL QUOTES TOKOH TERKENAL! 🌟
             </h2>
             <p class="text-xs sm:text-sm font-bold text-gray-700 mb-4">
@@ -444,10 +445,10 @@
             <!-- Quote Display Screen -->
             <div
               id="quote-box"
-              class="bg-white neo-box rounded-2xl p-5 min-h-[230px] flex flex-col justify-between text-center relative mb-6"
+              class="bg-white neo-box rounded-2xl p-4 sm:p-5 min-h-[200px] flex flex-col justify-center text-center relative mb-6"
             >
               <div class="flex items-center justify-center gap-2 mb-2">
-                <span class="text-3xl" id="quote-emoji">✈️</span>
+                <span class="text-2xl sm:text-3xl" id="quote-emoji">✈️</span>
                 <span
                   id="quote-figure"
                   class="font-chunky text-xs sm:text-sm bg-amber-200 border-2 border-gray-800 px-3 py-0.5 rounded-full text-gray-900"
@@ -467,7 +468,7 @@
 
               <div
                 id="quote-comment"
-                class="mt-2 text-xs font-bold bg-sky-100 text-sky-900 border-2 border-gray-800 p-2.5 rounded-xl leading-snug"
+                class="mt-2 text-[11px] sm:text-xs font-bold bg-sky-100 text-sky-900 border-2 border-gray-800 p-2.5 rounded-xl leading-snug"
               >
                 💡 Note buat kamu: Jadi kalau sekarang rasanya pusing dan capek,
                 itu tandanya kamu lagi di jalan yang bener buat berhasil! Gasken
@@ -479,9 +480,9 @@
           <div class="space-y-3">
             <button
               onclick="spinGachaQuote()"
-              class="w-full neo-btn bg-amber-300 hover:bg-amber-400 py-3.5 px-6 rounded-2xl font-chunky text-lg sm:text-xl text-gray-900 flex items-center justify-center gap-2"
+              class="w-full neo-btn bg-amber-300 hover:bg-amber-400 py-3 sm:py-3.5 px-4 rounded-2xl font-chunky text-base sm:text-xl text-gray-900 flex items-center justify-center gap-2"
             >
-              <span>🎲</span> PUTAR KAPSUL SEMANGAT!
+              <span class="text-xl">🎲</span> PUTAR KAPSUL SEMANGAT!
             </button>
             <button
               onclick="copyCurrentQuote()"
@@ -495,10 +496,10 @@
 
         <!-- 4. MINI-GAME BASMI PENGHALANG MIMPI -->
         <section
-          class="bg-gradient-to-b from-rose-100 to-amber-100 neo-box rounded-3xl p-6 flex flex-col justify-between relative"
+          class="bg-gradient-to-b from-rose-100 to-amber-100 neo-box rounded-3xl p-5 sm:p-6 flex flex-col justify-between relative"
         >
           <div>
-            <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
               <span
                 class="bg-white border-2 border-gray-800 px-3 py-1 rounded-full font-chunky text-xs text-rose-700 shadow-[2px_2px_0px_#1F2937]"
               >
@@ -511,7 +512,7 @@
               </span>
             </div>
 
-            <h2 class="text-2xl sm:text-3xl font-chunky text-gray-900 mb-1">
+            <h2 class="text-2xl sm:text-3xl font-chunky text-gray-900 mb-1 leading-tight">
               BASMI PENGHALANG MIMPI! 🔨
             </h2>
             <p class="text-xs sm:text-sm font-bold text-gray-700 mb-4">
@@ -525,27 +526,27 @@
               class="hidden bg-emerald-200 neo-box rounded-2xl p-4 text-center mb-3 animate-bounce"
             >
               <div class="text-3xl mb-1">🏆🎉🚀</div>
-              <p class="font-chunky text-sm sm:text-base text-gray-900">
+              <p class="font-chunky text-xs sm:text-base text-gray-900">
                 MANTAP! Semua penghalang mimpi udah rata sama tanah! Sekarang
                 jalan kamu makin mulus buat sukses! 🔥
               </p>
             </div>
 
             <!-- Monster Grid Arena -->
-            <div id="monster-arena" class="grid grid-cols-2 gap-3 my-2">
+            <div id="monster-arena" class="grid grid-cols-2 gap-2 sm:gap-3 my-2">
               <!-- Generated dynamically by JS -->
             </div>
           </div>
 
           <div
-            class="mt-4 pt-3 border-t-2 border-dashed border-gray-800/30 flex items-center justify-between"
+            class="mt-4 pt-3 border-t-2 border-dashed border-gray-800/30 flex flex-col sm:flex-row items-center justify-between gap-3"
           >
-            <span class="text-xs font-bold text-gray-700"
+            <span class="text-xs font-bold text-gray-700 text-center sm:text-left"
               >Masih ada beban pikiran yang lewat?</span
             >
             <button
               onclick="spawnMonsters(true)"
-              class="neo-btn bg-cyan-200 hover:bg-cyan-300 px-4 py-2 rounded-xl font-chunky text-xs sm:text-sm text-gray-900"
+              class="w-full sm:w-auto neo-btn bg-cyan-200 hover:bg-cyan-300 px-4 py-2.5 rounded-xl font-chunky text-xs sm:text-sm text-gray-900"
             >
               🔄 Munculin & Sikat Lagi!
             </button>
@@ -563,7 +564,7 @@
           >
             ⚡ CEK KOMITMEN PEJUANG MIMPI
           </div>
-          <h2 class="text-2xl sm:text-4xl font-chunky text-gray-900">
+          <h2 class="text-2xl sm:text-4xl font-chunky text-gray-900 leading-tight">
             GIMANA? SIAP GASKEN KEJAR MIMPI LAGI KAN? 🔥
           </h2>
           <p class="font-bold text-gray-700 text-xs sm:text-base">
@@ -573,13 +574,13 @@
 
           <!-- Buttons Area -->
           <div
-            class="flex flex-col sm:flex-row items-center justify-center gap-5 pt-4 min-h-[115px] relative"
+            class="flex flex-col sm:flex-row items-center justify-center gap-5 pt-4 min-h-[160px] sm:min-h-[115px] relative"
             id="runaway-zone"
           >
             <!-- READY & GASKEN BUTTON -->
             <button
               onclick="triggerEmergencyHype()"
-              class="neo-btn bg-amber-300 hover:bg-amber-400 text-gray-900 font-chunky text-base sm:text-xl px-7 py-4 rounded-2xl flex items-center gap-3 animate-pulse"
+              class="neo-btn bg-amber-300 hover:bg-amber-400 text-gray-900 font-chunky text-sm sm:text-xl px-6 py-4 rounded-2xl flex items-center justify-center gap-2 animate-pulse w-full sm:w-auto"
             >
               <span>🚀</span> Siap Gasken Pantang Mundur! ✨
             </button>
@@ -590,7 +591,7 @@
               onmouseover="evadeLazyButton(event)"
               ontouchstart="evadeLazyButton(event)"
               onclick="caughtLazyButton()"
-              class="neo-btn bg-gray-200 text-gray-700 font-chunky text-xs sm:text-sm px-4 py-3 rounded-xl transition-all duration-150"
+              class="neo-btn bg-gray-200 text-gray-700 font-chunky text-xs sm:text-sm px-4 py-3 rounded-xl transition-all duration-150 relative z-20"
             >
               🏳️ Mau Nyerah Aja Deh...
             </button>
@@ -599,11 +600,11 @@
       </section>
 
       <!-- 6. KARTU PEJUANG MIMPI & VOUCHER SUPPORT SYSTEM -->
-      <section class="bg-emerald-100 neo-box rounded-3xl p-6 sm:p-8">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-          <div class="md:col-span-5 space-y-4">
+      <section class="bg-emerald-100 neo-box rounded-3xl p-5 sm:p-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-5 space-y-4">
             <span
-              class="bg-sky-400 text-gray-900 border-2 border-gray-800 px-3 py-1 rounded-full font-chunky text-xs shadow-[2px_2px_0px_#1F2937]"
+              class="bg-sky-400 text-gray-900 border-2 border-gray-800 px-3 py-1 rounded-full font-chunky text-xs shadow-[2px_2px_0px_#1F2937] inline-block"
             >
               🎟️ Voucher Support System
             </span>
@@ -617,7 +618,7 @@
               berhak klaim Voucher Support System ini! Tulis nama & mimpimu,
               terus klaim ke WA ya!
             </p>
-            <div class="space-y-3">
+            <div class="space-y-4">
               <div>
                 <label class="block font-chunky text-xs text-gray-800 mb-1"
                   >Nama Pejuang Mimpi:</label
@@ -640,7 +641,7 @@
                   type="text"
                   id="cert-dream-input"
                   oninput="updateCertificate()"
-                  placeholder="Contoh: Lulus Tepat Waktu / Lolos Seleksi / Karir Impian"
+                  placeholder="Contoh: Lulus Tepat Waktu / Lolos Seleksi"
                   value="Tembus Target & Sukses Besar!"
                   maxlength="45"
                   class="w-full neo-box bg-white px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm focus:outline-none focus:ring-4 focus:ring-sky-300"
@@ -653,12 +654,12 @@
                 <select
                   id="cert-goal-input"
                   onchange="updateCertificate()"
-                  class="w-full neo-box bg-white px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm focus:outline-none focus:ring-4 focus:ring-sky-300 cursor-pointer"
+                  class="w-full neo-box bg-white px-3 py-2.5 rounded-xl font-bold text-xs sm:text-sm focus:outline-none focus:ring-4 focus:ring-sky-300 cursor-pointer"
                 >
                   <option
                     value="🎟️ Kupon Traktir Es Kopi / Matcha Pas Lagi Pusing Nugas!"
                   >
-                    🎟️ Kupon Traktir Es Kopi / Matcha Pas Lagi Pusing!
+                    🎟️ Kupon Traktir Es Kopi / Matcha Pas Pusing!
                   </option>
                   <option
                     value="🎟️ Kupon Ditraktir Seblak / Cemilan Biar Fokus Lagi!"
@@ -668,21 +669,21 @@
                   <option
                     value="🎟️ Kupon Sesi Curhat & Keluh Kesah Perjuangan Tanpa Dijudge!"
                   >
-                    🎟️ Kupon Sesi Curhat Perjuangan Tanpa Dijudge!
+                    🎟️ Kupon Sesi Curhat Tanpa Dijudge!
                   </option>
                   <option
                     value="🎟️ Kupon Traktir Makan Enak Pas Target Udah Tercapai!"
                   >
-                    🎟️ Kupon Traktir Makan Enak Pas Target Tercapai!
+                    🎟️ Kupon Traktir Makan Enak Pas Tercapai!
                   </option>
                 </select>
               </div>
-              <div class="pt-1 flex flex-col gap-2">
+              <div class="pt-2 flex flex-col gap-2">
                 <button
                   onclick="claimToWhatsApp()"
                   class="w-full neo-btn bg-sky-400 hover:bg-sky-300 text-gray-900 py-3 px-4 rounded-xl font-chunky text-sm sm:text-base flex items-center justify-center gap-2"
                 >
-                  <span>📲</span> COPY KLAIM VOUCHER BUAT DIKIRIM KE WA!
+                  <span>📲</span> COPY KLAIM VOUCHER KE WA!
                 </button>
                 <span
                   id="wa-copy-status"
@@ -696,67 +697,67 @@
           </div>
 
           <!-- Certificate Preview Card -->
-          <div class="md:col-span-7">
+          <div class="lg:col-span-7 mt-4 lg:mt-0">
             <div
               id="certificate-card"
-              class="bg-white neo-box-lg rounded-3xl p-5 sm:p-7 relative overflow-hidden"
+              class="bg-white neo-box-lg rounded-3xl p-4 sm:p-7 relative overflow-hidden"
             >
               <!-- Decorative corner badge -->
               <div
-                class="absolute -top-4 -right-4 w-16 h-16 bg-amber-300 border-3 border-gray-800 rounded-full flex items-end justify-start p-2.5 rotate-12"
+                class="absolute -top-4 -right-4 w-14 h-14 sm:w-16 sm:h-16 bg-amber-300 border-3 border-gray-800 rounded-full flex items-end justify-start p-2 sm:p-2.5 rotate-12"
                 style="border-width: 3px"
               >
-                <span class="text-xl">🏆</span>
+                <span class="text-lg sm:text-xl">🏆</span>
               </div>
 
               <div
-                class="border-3 border-dashed border-sky-500 rounded-2xl p-5 text-center space-y-3 bg-gradient-to-b from-sky-50/70 to-amber-50/50"
+                class="border-3 border-dashed border-sky-500 rounded-2xl p-4 sm:p-5 text-center space-y-3 bg-gradient-to-b from-sky-50/70 to-amber-50/50"
                 style="border-width: 3px"
               >
                 <div
-                  class="text-[11px] font-chunky uppercase tracking-wider bg-sky-400 text-gray-900 inline-block px-3 py-1 rounded-full border border-gray-800"
+                  class="text-[10px] sm:text-[11px] font-chunky uppercase tracking-wider bg-sky-400 text-gray-900 inline-block px-3 py-1 rounded-full border border-gray-800"
                 >
                   ✨ SERTIFIKAT & VOUCHER PEJUANG MIMPI ✨
                 </div>
-                <h3 class="text-lg sm:text-2xl font-chunky text-gray-900">
+                <h3 class="text-base sm:text-2xl font-chunky text-gray-900">
                   PENGHARGAAN PANTANG MENYERAH
                 </h3>
-                <p class="text-xs font-bold text-gray-500">
+                <p class="text-[11px] sm:text-xs font-bold text-gray-500">
                   Diberikan dengan penuh apresiasi kepada:
                 </p>
 
                 <div
                   id="cert-name-display"
-                  class="text-2xl sm:text-3xl font-chunky text-sky-700 underline decoration-wavy decoration-amber-400 py-1 break-words"
+                  class="text-xl sm:text-3xl font-chunky text-sky-700 underline decoration-wavy decoration-amber-400 py-1 break-words px-2"
                 >
                   Calon Orang Sukses
                 </div>
 
-                <div class="text-xs font-bold text-gray-700">
+                <div class="text-[11px] sm:text-xs font-bold text-gray-700 px-2">
                   Yang sedang berjuang keras mengejar target:
                   <span
                     id="cert-dream-display"
-                    class="block font-chunky text-sm sm:text-base text-gray-900 mt-0.5"
+                    class="block font-chunky text-xs sm:text-base text-gray-900 mt-1"
                   >
                     🌟 Tembus Target & Sukses Besar!
                   </span>
                 </div>
 
                 <p
-                  class="text-xs font-bold text-gray-600 max-w-md mx-auto pt-1"
+                  class="text-[11px] sm:text-xs font-bold text-gray-600 max-w-md mx-auto pt-2"
                 >
                   Berhak menukarkan Voucher Support System berikut kapan saja:
                 </p>
 
                 <div
                   id="cert-goal-display"
-                  class="bg-amber-200 border-2 border-gray-800 px-4 py-2 rounded-xl font-chunky text-xs sm:text-sm text-gray-900 inline-block shadow-[3px_3px_0px_#1F2937]"
+                  class="bg-amber-200 border-2 border-gray-800 px-3 py-2 rounded-xl font-chunky text-[11px] sm:text-sm text-gray-900 inline-block shadow-[3px_3px_0px_#1F2937] break-words whitespace-normal w-full sm:w-auto"
                 >
                   "🎟️ Kupon Traktir Es Kopi / Matcha Pas Lagi Pusing Nugas!"
                 </div>
 
                 <div
-                  class="pt-4 flex items-center justify-between text-left border-t-2 border-sky-200 text-xs font-bold"
+                  class="pt-4 flex flex-col sm:flex-row items-center justify-between text-center sm:text-left border-t-2 border-sky-200 text-[10px] sm:text-xs font-bold gap-3 sm:gap-0"
                 >
                   <div>
                     <span class="block text-gray-400"
@@ -768,7 +769,7 @@
                       >20% (Siap Gasken!)</span
                     >
                   </div>
-                  <div class="text-right">
+                  <div class="sm:text-right">
                     <span class="block text-gray-400">Disahkan Oleh,</span>
                     <span class="font-chunky text-gray-900"
                       >Partner Support System Terbaikmu 🤝✨</span
@@ -782,11 +783,11 @@
       </section>
 
       <!-- FOOTER -->
-      <footer class="text-center pt-4 pb-8 font-bold text-sm text-gray-700">
-        <p class="font-chunky text-base text-sky-700">
+      <footer class="text-center pt-4 pb-8 font-bold text-sm text-gray-700 px-4">
+        <p class="font-chunky text-sm sm:text-base text-sky-700">
           TETAP SEMANGAT NGEJAR MIMPINYA YA, CALON ORANG SUKSES! 🚀🌟
         </p>
-        <p class="text-xs mt-1">
+        <p class="text-[11px] sm:text-xs mt-2">
           Pelan-pelan nggak apa-apa, yang penting jangan berhenti melangkah! 💪
         </p>
       </footer>
@@ -798,21 +799,21 @@
       class="fixed inset-0 z-50 hidden items-center justify-center p-4 party-active bg-opacity-95"
     >
       <div
-        class="bg-white neo-box-lg rounded-3xl max-w-lg w-full p-6 sm:p-8 text-center relative animate-float"
+        class="bg-white neo-box-lg rounded-3xl max-w-lg w-full p-6 sm:p-8 text-center relative animate-float mx-2 sm:mx-auto max-h-[90vh] overflow-y-auto"
       >
         <div class="text-5xl sm:text-6xl mb-3">🚀🏆🎉🔥</div>
         <div
-          class="bg-amber-300 text-gray-900 border-2 border-gray-800 px-3.5 py-1 rounded-full font-chunky text-xs inline-block mb-3"
+          class="bg-amber-300 text-gray-900 border-2 border-gray-800 px-3.5 py-1 rounded-full font-chunky text-[10px] sm:text-xs inline-block mb-3"
         >
           ✨ MODE PEJUANG MIMPI 1000% AKTIF! ✨
         </div>
         <h2
-          class="text-2xl sm:text-4xl font-chunky leading-tight text-gray-900 mb-3"
+          class="text-xl sm:text-4xl font-chunky leading-tight text-gray-900 mb-3"
         >
           NAH GITU DONG! MENTAL CALON ORANG SUKSES! 🙌
         </h2>
         <p
-          class="font-bold text-sm sm:text-base text-gray-700 mb-6 bg-sky-50 p-4 rounded-2xl border-2 border-sky-300 leading-relaxed"
+          class="font-bold text-xs sm:text-base text-gray-700 mb-6 bg-sky-50 p-4 rounded-2xl border-2 border-sky-300 leading-relaxed"
         >
           "Perjalanan ngejar mimpi emang kadang bikin pusing dan nguras tenaga.
           Tapi inget ya, semua usaha keras yang kamu tabung hari ini pasti bakal
@@ -821,7 +822,7 @@
         </p>
         <button
           onclick="closeEmergencyHype()"
-          class="neo-btn bg-emerald-300 hover:bg-emerald-400 text-gray-900 px-6 py-3.5 rounded-2xl font-chunky text-base sm:text-lg w-full"
+          class="neo-btn bg-emerald-300 hover:bg-emerald-400 text-gray-900 px-4 sm:px-6 py-3.5 rounded-2xl font-chunky text-sm sm:text-lg w-full"
         >
           🔥 Siap! Gasken Lanjut Berjuang! 🚀
         </button>
@@ -839,7 +840,6 @@
       let koCounter = 0;
       let audioCtx = null;
 
-      // KAPSUL QUOTES TOKOH TERKENAL DENGAN GAYA SANTAI
       const quotesDB = [
         {
           emoji: "✈️",
@@ -1179,11 +1179,11 @@
           card.dataset.hp = m.maxHp;
           card.dataset.maxHp = m.maxHp;
           card.dataset.ko = "false";
-          card.className = `${m.bg} neo-btn rounded-2xl p-3.5 flex flex-col items-center justify-between text-center min-h-[130px] relative transition-all duration-200`;
+          card.className = `${m.bg} neo-btn rounded-2xl p-3 sm:p-3.5 flex flex-col items-center justify-between text-center min-h-[120px] sm:min-h-[130px] relative transition-all duration-200`;
 
           card.innerHTML = `
                     <span class="text-3xl sm:text-4xl mb-1 pointer-events-none">${m.emoji}</span>
-                    <span class="font-chunky text-xs sm:text-sm leading-snug text-gray-900 pointer-events-none mb-2">${m.name}</span>
+                    <span class="font-chunky text-[10px] sm:text-sm leading-snug text-gray-900 pointer-events-none mb-2">${m.name}</span>
                     <div class="w-full bg-white/80 h-3 rounded-full border border-gray-800 overflow-hidden p-0.5 pointer-events-none">
                         <div class="hp-bar h-full bg-rose-500 rounded-full transition-all duration-200" style="width: 100%;"></div>
                     </div>
@@ -1231,11 +1231,11 @@
           cardEl.style.transform = `scale(0.85)`;
           setTimeout(() => {
             cardEl.innerHTML = `
-                        <span class="text-2xl mb-1">✅🔥</span>
-                        <span class="font-chunky text-xs text-emerald-800">RINTANGAN LEWAT! 🚀</span>
+                        <span class="text-xl sm:text-2xl mb-1">✅🔥</span>
+                        <span class="font-chunky text-[10px] sm:text-xs text-emerald-800">RINTANGAN LEWAT! 🚀</span>
                     `;
             cardEl.className =
-              "bg-white/70 border-2 border-dashed border-emerald-500 rounded-2xl p-3 flex flex-col items-center justify-center min-h-[130px] cursor-default";
+              "bg-white/70 border-2 border-dashed border-emerald-500 rounded-2xl p-2 flex flex-col items-center justify-center min-h-[120px] sm:min-h-[130px] cursor-default";
             cardEl.style.transform = "none";
 
             if (defeatedCount === monstersDB.length) {
@@ -1253,8 +1253,8 @@
         const container = document.getElementById("hit-effects-container");
         const badge = document.createElement("div");
         badge.className =
-          "fixed z-50 bg-amber-300 border-2 border-gray-800 px-3 py-1 rounded-full font-chunky text-sm sm:text-base text-gray-900 shadow-[3px_3px_0px_#1F2937] comic-pop";
-        badge.style.left = `${Math.max(20, Math.min(window.innerWidth - 180, x - 50))}px`;
+          "fixed z-50 bg-amber-300 border-2 border-gray-800 px-3 py-1 rounded-full font-chunky text-xs sm:text-sm text-gray-900 shadow-[3px_3px_0px_#1F2937] comic-pop whitespace-nowrap";
+        badge.style.left = `${Math.max(20, Math.min(window.innerWidth - 150, x - 50))}px`;
         badge.style.top = `${Math.max(20, y - 20)}px`;
         badge.innerText = text;
 
@@ -1272,15 +1272,22 @@
         "Mimpi udah di depan mata tuh! 🚀",
         "Tombol nyerahnya lagi rusak! 🚫",
         "Masa kalah sama keadaan? Sikat! 🔥",
-        "Klik tombol kuning aja bro/bestie! ✨",
+        "Klik tombol kuning aja bro! ✨",
       ];
 
       function evadeLazyButton(e) {
         if (e) e.preventDefault();
         playSound("pop");
         const btn = document.getElementById("lazy-btn");
-        const randomX = (Math.random() - 0.5) * 200;
-        const randomY = (Math.random() - 0.5) * 85;
+        
+        // Membatasi pergerakan tombol kabur khusus layar HP biar nggak nabrak batas layar
+        const isMobile = window.innerWidth < 640;
+        const maxMoveX = isMobile ? 80 : 200; 
+        const maxMoveY = isMobile ? 50 : 85;
+        
+        const randomX = (Math.random() - 0.5) * maxMoveX;
+        const randomY = (Math.random() - 0.5) * maxMoveY;
+        
         btn.style.transform = `translate(${randomX}px, ${randomY}px) rotate(${(Math.random() - 0.5) * 12}deg)`;
         btn.innerText =
           lazyTaunts[Math.floor(Math.random() * lazyTaunts.length)];
